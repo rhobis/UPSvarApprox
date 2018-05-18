@@ -20,3 +20,16 @@ vector of first-order inclusion probabilities.
 Approximations of joint-inclusion probabilities by means of first-order
 inclusion probabilities.
 }
+\references{
+Hartley, H.O.; Rao, J.N.K., 1962. Sampling With Unequal Probability and Without Replacement.
+The Annals of Mathematical Statistics 33 (2), 350-374.
+
+Hájek, J., 1964. Asymptotic Theory of Rejective Sampling with Varying Probabilities from a Finite Population.
+The Annals of Mathematical Statistics 35 (4), 1491-1523.
+
+Tillé, Y., 1996. Some Remarks on Unequal Probability Sampling Designs Without Replacement.
+Annals of Economics and Statistics 44, 177-189.
+
+Brewer, K.R.W.; Donadio, M.E., 2003. The High Entropy Variance of the Horvitz-Thompson Estimator.
+Survey Methodology 29 (2), 189-196.
+}
