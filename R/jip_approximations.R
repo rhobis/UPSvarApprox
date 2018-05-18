@@ -37,7 +37,7 @@ jip_approx <- function( pik, method ){
     FUN <- switch(method,
            "Hajek"       = "jip_hajek",
            "Hartley-Rao" = "jip_hartleyrao",
-           "IFPF"        = "jip_IFPF",
+           "IPFP"        = "jip_IPFP",
            "Brewer"      = "jip_brewer"
            )
     jips <- do.call( FUN, list( pik ) )
@@ -124,7 +124,7 @@ jip_IPFP <- function(pik,eps=1e-06, maxIter=1000){
         iter <- iter + 1
     }
 
-    out <- outer(b,b,'*')
+    out <- outer(b2,b2,'*')
     diag(out) <- pik
     return(out)
 }
