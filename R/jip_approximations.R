@@ -8,6 +8,8 @@
 #' @param method string representing one of the available approximation methods.
 #'
 #'
+#' @details
+#' Available methods are "Hajek", "HartleyRao", "Tille" and "Brewer18"
 #'
 #'
 #' @return A symmetric matrix of inclusion probabilities, which diagonal is the
@@ -38,13 +40,13 @@ jip_approx <- function( pik, method ){
     method <- match.arg(method, c( "Hajek", "HartleyRao", "Tille", "Brewer18") )
 
     if( !identical( class(pik), "numeric" ) ){
-        stop( "pik should be a vector!")
+        stop( "Argument 'pik' should be a numeric vector!")
     }else if( length(pik) < 2 ){
-        stop( "The pik vector is too short!" )
+        stop( "The 'pik' vector is too short!" )
     }else if( any(pik)<0  | any(pik)>1 ){
-        stop( "Some pik values are outside the interval [0, 1]")
-    }else if( !identical( sum(pik), as.integer( sum(pik) ) ) ){
-        stop( "The sum of pik values is not an integer!")
+        stop( "Some values of the 'pik' vector are outside the interval [0, 1]")
+    }else if( sum(pik) != as.integer( sum(pik) ) ){
+        stop( "The sum of 'pik' values is not an integer!")
     }
 
     ### Call method ---
