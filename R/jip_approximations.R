@@ -43,9 +43,9 @@ jip_approx <- function( pik, method ){
         stop( "Argument 'pik' should be a numeric vector!")
     }else if( length(pik) < 2 ){
         stop( "The 'pik' vector is too short!" )
-    }else if( any(pik)<0  | any(pik)>1 ){
+    }else if( any(pik<0)  | any(pik>1) ){
         stop( "Some values of the 'pik' vector are outside the interval [0, 1]")
-    }else if( sum(pik) != as.integer( sum(pik) ) ){
+    }else if( !all.equal(sum(pik), round(sum(pik)) ) ){
         stop( "The sum of 'pik' values is not an integer!")
     }
 
@@ -54,7 +54,7 @@ jip_approx <- function( pik, method ){
            "Hajek"       = jip_Hajek(pik),
            "HartleyRao"  = jip_HartleyRao(pik),
            "Tille"       = jip_Tille(pik),
-           "Brewer"      = jip_Brewer(pik, method)
+           "Brewer18"    = jip_Brewer(pik, method)
            )
 
     ### Return result ---

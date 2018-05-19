@@ -74,7 +74,7 @@ Var_approx <- function(y, pik, n, method, ...){
         stop( "Argument 'n' must be an integer number")
     }
 
-    if( !identical( class(y), "numeric" ) ){
+    if( !(class(y) %in% c("numeric", "integer")) ){
         stop( "The argument 'y' should be a numeric vector!")
     }else if( N < 2 ){
         stop( "The 'y' vector is too short!" )
@@ -93,7 +93,7 @@ Var_approx <- function(y, pik, n, method, ...){
         stop( "Some values of the 'pik' vector are outside the interval [0, 1]")
     }else if( any(pik %in% c(NA, NaN, Inf)) ){
         stop( "The 'pik' vector contains invalid values (NA, NaN, Inf)" )
-    }else if( sum(pik) != n) stop("the sum of 'pik' values should be equal to 'n' ")
+    }else if( !all.equal( sum(pik), n) ) stop("the sum of 'pik' values should be equal to 'n' ")
 
 
     ### Compute Variance ---

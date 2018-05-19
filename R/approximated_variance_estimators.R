@@ -130,7 +130,7 @@ approx_var_est <- function(y, pik, method, sample=NULL, ...){
         stop( "The 'pik' vector contains invalid values (NA, NaN, Inf)" )
     }
 
-    if( !identical( class(y), "numeric" ) ){
+    if( !(class(y) %in% c("numeric", "integer")) ){
         stop( "The argument 'y' should be a numeric vector!")
     }else if( ly < 2 ){
         stop( "The 'y' vector is too short!" )
@@ -160,7 +160,7 @@ approx_var_est <- function(y, pik, method, sample=NULL, ...){
                        "MateiTille3", "MateiTille4", "MateiTille5",
                        "Brewer1", "Brewer3", "Brewer4" ) ){
 
-        if( sum(pik) != as.integer(sum(pik)) )
+        if( !all.equal(sum(pik), round(sum(pik)) ) )
             stop( "The sum of pik values is not an integer!")
 
         if( ly >= lp )
