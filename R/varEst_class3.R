@@ -126,9 +126,9 @@ var_MateiTille <- function(y, pik, method, sample, maxIter=1000, eps=1e-05) {
         ### compute variance ---
         d  <- (1-pik)
         dk <- pik*d / sum(pik*d)
-        dk <- dk[sample]
 
         ds <- d[sample]
+
         v <- sum( ds*(y/piks) ) / sum(ds)
         v <- sum( ds * ( y/piks -  v )^2 )
         v <- v / ( 1 - sum( (dk**2)/pik ) )
