@@ -39,10 +39,38 @@
 #' \sum__U\sum_{j > i} [ \pi(i)\pi(j) - \pi(ij) ] [ y(i)/\pi(i) - y(j)/\pi(j) ]^2 / \pi(ij) }
 #'
 #'
+#'
+#'
+#' @examples
+#'
+#' ### Generate population data ---
+#' N <- 500; n <- 50
+#'
+#' set.seed(0)
+#' x <- rgamma(500, scale=10, shape=5)
+#' y <- abs( 2*x + 3.7*sqrt(x) * rnorm(N) )
+#'
+#' pik  <- n * x/sum(x)
+#' pikl <- jip_approx(pik, method='Hajek')
+#'
+#' ### Dummy sample ---
+#' s   <- sample(N, n)
+#'
+#'
+#' ### Compute Variance ---
+#' HTvar(y=y, pikl=pikl, sample=FALSE, method="HT")
+#' HTvar(y=y, pikl=pikl, sample=FALSE, method="SYG")
+#'
+#'
+#' ### Estimate Variance ---
+#' #' HTvar(y=y[s], pikl=pikl[s,s], sample=TRUE, method="HT")
+#' #' HTvar(y=y[s], pikl=pikl[s,s], sample=TRUE, method="SYG")
+#'
+#'
 #' @export
 #'
 
-varHT <- function(y, pikl, sample = TRUE, method = "HT") {
+HTvar <- function(y, pikl, sample = TRUE, method = "HT") {
 
     ### Check input ---
     method <- match.arg(method, c("HT", "SYG"))
@@ -56,9 +84,9 @@ varHT <- function(y, pikl, sample = TRUE, method = "HT") {
     if( !is.logical(sample) | is.na(sample) )  stop("Argument 'sample' must be a logical value (TRUE/FALSE)!")
 
 
-    message( ifelse(sample, "Estimating ", "Computing "),
-             ifelse(identical(method, "HT"), "Horvitz-Thompson ", "Sen-Yates-Grundy "),
-             "variance ...")
+    # message( ifelse(sample, "Estimating ", "Computing "),
+    #          ifelse(identical(method, "HT"), "Horvitz-Thompson ", "Sen-Yates-Grundy "),
+    #          "variance ...")
 
 
     ### Compute/Estimate variance ---
@@ -81,7 +109,7 @@ varHT <- function(y, pikl, sample = TRUE, method = "HT") {
         D   <- (pp - pikl)
         if( sample ) D <- D/pikl
 
-        v   <- D*y_y2
+        v   <- D*yy
         v[!upper.tri(v)] <- 0
         v   <- sum(v)
 
