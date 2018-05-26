@@ -9,7 +9,45 @@
 #'
 #'
 #' @details
-#' Available methods are "Hajek", "HartleyRao", "Tille" and "Brewer18"
+#' Available methods are "Hajek", "HartleyRao", "Tille",
+#' "Brewer9","Brewer10","Brewer11", and "Brewer18".
+#' Note that these methods were derived for high-entropy sampling designs.
+#'
+#' Hájek (1964) approximation is derived under Maximum Entropy sampling design
+#' and is given by
+#'
+#' \deqn{}{}
+#'
+#' Hartley and Rao (1962) proposed the following approximation under
+#' randomised systematic sampling:
+#'
+#' \deqn{}{}
+#'
+#' Tillé (1996) proposed the following iterative procedure:
+#'
+#' Finally, Brewer and Donadio (2003) proposed four approximations, which in the
+#' \code{method} argument of this function are
+#' distinguished by the number of the given in the paper to their equation.
+#' The approximation proposed is
+#'
+#' \deqn{\tilde{\pi}_{ij} = \pi_i\pi_j (c_i + c_j)/2  }{ \pi(ij) = \pi(i)\pi(j) [c(i) + c(j) ]/2 }
+#'
+#' where the \eqn{c_i} values are given by:
+#'
+#' \itemize{
+#'     \item Equation (9), \code{method="BrewerDonadio9"}:
+#'         \deqn{c_i = (n-1) / (n-\pi_i)}{c(i) = [n-1] / [n-\pi(i) ]}
+#'    \item Equation (10), \code{method="BrewerDonadio10"}:
+#'         \deqn{c_i = (n-1) / (n- n^{-1}\sum_{i\in U}\pi_i^2)}{c(i) = [n-1] / [n- \sum_U \pi(i)^2 / n ]}
+#'     \item Equation (11), \code{method="BrewerDonadio11"}:
+#'         \deqn{c_i = (n-1) / (n - 2\pi_i + n^{-1}\sum_{i\in U}\pi_i^2)}{c(i) = [n-1] / [n- 2\pi(i) + \sum_U \pi(i)^2 / n ]}
+#'     \item Equation (18), \code{method="BrewerDonadio18"}:
+#'         \deqn{c_i = (n-1) / (n - (2n-1)(n-1)^{-1}\pi_i + (n-1)^{-1}\sum_{i\in U}\pi_i^2)}{
+#'         c(i) = [n-1] / [n- \pi(i)(2n -1)/(n-1) + \sum_U \pi(i)^2 / (n-1) ]}
+#'
+#' }
+#'
+#'
 #'
 #'
 #' @return A symmetric matrix of inclusion probabilities, which diagonal is the
@@ -30,6 +68,30 @@
 #' Brewer, K.R.W.; Donadio, M.E., 2003. The High Entropy Variance of the Horvitz-Thompson Estimator.
 #' Survey Methodology 29 (2), 189-196.
 #'
+#'
+#'
+#'#' @examples
+#'
+#'### Generate population data ---
+#' N <- 20; n<-5
+#'
+#' set.seed(0)
+#' x <- rgamma(N, scale=10, shape=5)
+#' y <- abs( 2*x + 3.7*sqrt(x) * rnorm(N) )
+#'
+#' pik  <- n * x/sum(x)
+#'
+#' ### Approximate joint-inclusion probabilities ---
+#' pikl <- jip_approx(pik, method='Hajek')
+#' pikl <- jip_approx(pik, method='HartleyRao')
+#' pikl <- jip_approx(pik, method='Tille')
+#' pikl <- jip_approx(pik, method='BrewerDonadio9')
+#' pikl <- jip_approx(pik, method='BrewerDonadio10')
+#' pikl <- jip_approx(pik, method='BrewerDonadio11')
+#' pikl <- jip_approx(pik, method='BrewerDonadio18')
+#'
+#'
+#'
 #' @export
 
 
@@ -37,7 +99,8 @@
 jip_approx <- function( pik, method ){
 
     ### Check input ---
-    method <- match.arg(method, c( "Hajek", "HartleyRao", "Tille", "Brewer18") )
+    method <- match.arg(method, c( "Hajek", "HartleyRao", "Tille",
+                                   "BrewerDonadio9","BrewerDonadio10","BrewerDonadio11","BrewerDonadio18") )
 
     if( !identical( class(pik), "numeric" ) ){
         stop( "Argument 'pik' should be a numeric vector!")
@@ -45,7 +108,7 @@ jip_approx <- function( pik, method ){
         stop( "The 'pik' vector is too short!" )
     }else if( any(pik<0)  | any(pik>1) ){
         stop( "Some values of the 'pik' vector are outside the interval [0, 1]")
-    }else if( !all.equal(sum(pik), round(sum(pik)) ) ){
+    }else if( isTRUE(all.equal(sum(pik), as.integer(sum(pik)) )) ){
         stop( "The sum of 'pik' values is not an integer!")
     }
 
@@ -74,16 +137,34 @@ jip_approx <- function( pik, method ){
 #' \code{"Brewer18"} is the approximation showed in equation (18) of Brewer and Donadio (2003)
 #'
 
-jip_Brewer <- function(pik, method){
+jip_BrewerDonadio <- function(pik, method){
 
-    method <- match.arg(method, c("Brewer18"))
+    method <- match.arg(method, c("BrewerDonadio9","BrewerDonadio10","BrewerDonadio11","BrewerDonadio18"))
     n <- sum(pik)
 
+    ### Compute c values ---
+    if( identical(method, "BrewerDonadio9") ){
+
+        ci <- (n-1) / (n-pik)
+
+    }else if( identical(method, "BrewerDonadio10") ){
+
+        ci <- (n-1) / (n - sum(pik**2)/n)
+
+    }else if( identical(method, "BrewerDonadio11") ){
+
+        ci <- (n-1) / (n - 2*pik + sum(pik**2)/n)
+
+    }else if( identical(method, "BrewerDonadio18") ){
+
+        ci <- (n-1) / ( n - (2*n-1)/(n-1)*pik + sum(pik**2)/(n-1) )
+
+    }
+
     ### Estimate jips ---
-    ci <- (n-1) / (n-(2*n-1)/(n-1) * pik + sum(pik**2)/(n-1))
     cc <- outer(ci,ci, '+')
     pp <- outer(pik,pik, '*')
-    out <- cc*pp / 2
+    out <- pp*cc / 2
     diag(out) <- pik
 
     ### Return result ---
@@ -183,6 +264,7 @@ jip_Tille <- function(pik,eps=1e-06, maxIter=1000){
     ### Estimate jips ---
     out <- outer(b2,b2,'*')
     diag(out) <- pik
+
 
     ### Return result ---
     return(out)
