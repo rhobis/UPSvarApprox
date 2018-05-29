@@ -20,6 +20,45 @@ vector of first-order inclusion probabilities.
 Approximations of joint-inclusion probabilities by means of first-order
 inclusion probabilities.
 }
+\details{
+Available methods are "Hajek", "HartleyRao", "Tille",
+"Brewer9","Brewer10","Brewer11", and "Brewer18".
+Note that these methods were derived for high-entropy sampling designs.
+
+Hájek (1964) approximation is derived under Maximum Entropy sampling design
+and is given by
+
+\deqn{}{}
+
+Hartley and Rao (1962) proposed the following approximation under
+randomised systematic sampling:
+
+\deqn{}{}
+
+Tillé (1996) proposed the following iterative procedure:
+
+Finally, Brewer and Donadio (2003) proposed four approximations, which in the
+\code{method} argument of this function are
+distinguished by the number of the given in the paper to their equation.
+The approximation proposed is
+
+\deqn{\tilde{\pi}_{ij} = \pi_i\pi_j (c_i + c_j)/2  }{ \pi(ij) = \pi(i)\pi(j) [c(i) + c(j) ]/2 }
+
+where the \eqn{c_i} values are given by:
+
+\itemize{
+    \item Equation (9), \code{method="BrewerDonadio9"}:
+        \deqn{c_i = (n-1) / (n-\pi_i)}{c(i) = [n-1] / [n-\pi(i) ]}
+   \item Equation (10), \code{method="BrewerDonadio10"}:
+        \deqn{c_i = (n-1) / (n- n^{-1}\sum_{i\in U}\pi_i^2)}{c(i) = [n-1] / [n- \sum_U \pi(i)^2 / n ]}
+    \item Equation (11), \code{method="BrewerDonadio11"}:
+        \deqn{c_i = (n-1) / (n - 2\pi_i + n^{-1}\sum_{i\in U}\pi_i^2)}{c(i) = [n-1] / [n- 2\pi(i) + \sum_U \pi(i)^2 / n ]}
+    \item Equation (18), \code{method="BrewerDonadio18"}:
+        \deqn{c_i = (n-1) / (n - (2n-1)(n-1)^{-1}\pi_i + (n-1)^{-1}\sum_{i\in U}\pi_i^2)}{
+        c(i) = [n-1] / [n- \pi(i)(2n -1)/(n-1) + \sum_U \pi(i)^2 / (n-1) ]}
+
+}
+}
 \references{
 Hartley, H.O.; Rao, J.N.K., 1962. Sampling With Unequal Probability and Without Replacement.
 The Annals of Mathematical Statistics 33 (2), 350-374.
@@ -32,4 +71,26 @@ Annals of Economics and Statistics 44, 177-189.
 
 Brewer, K.R.W.; Donadio, M.E., 2003. The High Entropy Variance of the Horvitz-Thompson Estimator.
 Survey Methodology 29 (2), 189-196.
+
+
+
+#' @examples
+
+### Generate population data ---
+N <- 20; n<-5
+
+set.seed(0)
+x <- rgamma(N, scale=10, shape=5)
+y <- abs( 2*x + 3.7*sqrt(x) * rnorm(N) )
+
+pik  <- n * x/sum(x)
+
+### Approximate joint-inclusion probabilities ---
+pikl <- jip_approx(pik, method='Hajek')
+pikl <- jip_approx(pik, method='HartleyRao')
+pikl <- jip_approx(pik, method='Tille')
+pikl <- jip_approx(pik, method='BrewerDonadio9')
+pikl <- jip_approx(pik, method='BrewerDonadio10')
+pikl <- jip_approx(pik, method='BrewerDonadio11')
+pikl <- jip_approx(pik, method='BrewerDonadio18')
 }
