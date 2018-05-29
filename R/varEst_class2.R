@@ -150,6 +150,38 @@ var_Brewer_class2 <- function(y, pik) {
 }
 
 
+#' Hájek Approximate Variance Estimator
+#'
+#' Compute an approximate variance estimate using the approximation of
+#' joint-inclusion probabilities proposed by Hájek (1964).
+#' Estimator of class 2, it requires only first-order inclusion probabilities and
+#' only for sample units.
+#'
+#' @param pik numeric vector of first-order inclusion probabilities for sample units
+#' @inheritParams approx_var_est
+#'
+#'
+#' @return a scalar, the estimated variance
+#'
+
+var_Hajek <- function(y, pik) {
+
+    ### Estimate variance ---
+    n  <- length(y)
+    d  <- 1-pik
+
+    ck <- n * d / (n-1)
+
+    B  <- sum(ck*y/pik) / sum(ck)
+    ek <- (y/pik - B )**2
+
+    v <- sum(ck*ek)
+
+    ### Return result ---
+    return( v )
+}
+
+
 
 #' Rosén Approximate Variance Estimator
 #'

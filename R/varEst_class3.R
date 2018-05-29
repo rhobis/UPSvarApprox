@@ -19,7 +19,7 @@
 #' @return a scalar, the estimated variance
 #'
 
-var_Berger <- function(y, pik, method, sample) {
+var_Berger <- function(y, pik, sample) {
 
     ### Input values ---
     n <- length(y)
@@ -35,6 +35,41 @@ var_Berger <- function(y, pik, method, sample) {
     ys <- piks * sum(ck*y/piks) / sum(ck)
     delta2 <- (y-ys)**2
     v <- sum( ck * delta2 / (piks**2) )
+
+    ### Return result ---
+    return( v )
+
+}
+
+#' Hartley and Rao approximate variance estimator
+#'
+#' Compute the an approximate variance estimator obtained by the approximation
+#' of joint-inclusion probabilities proposed by Hartley and Rao (1962).
+#' Estimator of class 3, it requires only first-order inclusion probabilities but
+#' for all population units.
+#'
+#' @param pik numeric vector of first-order inclusion probabilities for all population units
+#' @inheritParams approx_var_est
+#'
+#'
+#' @return a scalar, the estimated variance
+#'
+
+var_HartleyRao <- function(y, pik, sample) {
+
+    ### Input values ---
+    n <- length(y)
+    piks <- pik[sample]
+
+    ### Compute c_k values ---
+    ck <- n / (n-1)
+    ck <- ck * ( 1 - piks - sum(piks)/n + sum(pik**2)/n )
+
+    ### Estimate variance ---
+    B  <- sum(y/piks) / n
+    ek <- y/piks - B
+
+    v <- sum( ck*(ek**2) )
 
     ### Return result ---
     return( v )
