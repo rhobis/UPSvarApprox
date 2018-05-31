@@ -240,7 +240,7 @@ var_Brewer_class3 <- function(y, pik, method, sample) {
 
     ### Check input ---
     method <- match.arg( method,
-                         c(  "Brewer1",
+                         c(  "Brewer2",
                              "Brewer3",
                              "Brewer4" )
     )
@@ -248,7 +248,7 @@ var_Brewer_class3 <- function(y, pik, method, sample) {
     n <- length(y)
 
     ### Compute c_k values
-    if( identical( method, "Brewer1") ){
+    if( identical( method, "Brewer2") ){
 
         ck <- n - sum(pik**2)/n
         ck <- (n-1)/ck

@@ -4,14 +4,12 @@
 \alias{var_Berger}
 \title{Berger approximate variance estimator}
 \usage{
-var_Berger(y, pik, method, sample)
+var_Berger(y, pik, sample)
 }
 \arguments{
 \item{y}{numeric vector of sample observations}
 
 \item{pik}{numeric vector of first-order inclusion probabilities for all population units}
-
-\item{method}{string indicating the desired approximate variance estimator}
 
 \item{sample}{Either a numeric vector of length equal to the sample size, containing
 the indeces of sample units, or a boolean vector of the same length of \code{pik}, indicating which
