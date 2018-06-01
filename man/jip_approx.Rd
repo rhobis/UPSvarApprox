@@ -28,18 +28,24 @@ Note that these methods were derived for high-entropy sampling designs.
 Hájek (1964) approximation is derived under Maximum Entropy sampling design
 and is given by
 
-\deqn{}{}
+\deqn{\tilde{\pi}_{ij} = \pi_i\pi_j \frac{\bigl( 1 - (1-\pi_i)(1-\pi_j)}{d} \bigr)}{
+      \pi(ij) = \pi(i) \pi(j) (1 - ( 1-\pi(i) )( 1 -\pi(j) ) )/d}
+ where \eqn{d = \sum_{i\in U} \pi_i(1-\pi_i) }{d = \sum \pi(i)(1-\pi(i))}
 
 Hartley and Rao (1962) proposed the following approximation under
 randomised systematic sampling:
 
-\deqn{}{}
+\deqn{\tilde{\pi}_{ij} = \frac{n-1}{n} \pi_i\pi_j + \frac{n-1}{n^2} (\pi_i^2 \pi_j + \pi_i \pi_j^2)
+      - \frac{n-1}{n^3}\pi_i\pi_j \sum_{i\in U} \pi_j^2 + \frac{2(n-1)}{n^3} (\pi_i^3 \pi_j + \pi_i\pi_j^3 + \pi_i^2 \pi_j^2)
+      - \frac{3(n-1)}{n^4} (\pi_i^2 \pi_j + \pi_i\pi_j^2) \sum_{i \in U}\pi_i^2
+      + \frac{3(n-1)}{n^5} \pi_i\pi_j \biggl( \sum_{i\in U} \pi_i^2 \biggr)^2
+      - frac{2(n-1)}{n^4} \pi_i\pi_j \sum{i \in U} \pi_j^3  }{*see pdf version of documentation*}
 
 Tillé (1996) proposed the approximation \eqn{\tilde{\pi}_{ij} = \beta_i\beta_j}{\pi(ij) = \beta_i \beta_j},
 where the coefficients \eqn{\beta_i}{\beta} are computed iteratively through the
    following procedure:
     \enumerate{
-        \item \eqn{\beta_i^{(0)} = \pi_i, \,\, \forall i\in U}{\beta(0) = \pi, \forall i \in U}
+        \item \eqn{\beta_i^{(0)} = \pi_i, \,\, \forall i\in U}{\beta(0) = \pi, i = 1, ..., N}
         \item \eqn{ \beta_i^{(2k-1)} = \frac{(n-1)\pi_i}{\beta^{(2k-2)} - \beta_i^{(2k-2)}}  }{
                     \beta(2k-1) = ( (n-1)\pi )/(\sum\beta(2k-2) - \beta(2k-2)) }
         \item \eqn{\beta_i^{2k} = \beta_i^{(2k-1)}

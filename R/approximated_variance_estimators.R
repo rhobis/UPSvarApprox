@@ -119,7 +119,7 @@
 #'    The coefficients \eqn{\beta_i}{\beta} are computed iteratively through the
 #'    following procedure:
 #'     \enumerate{
-#'         \item \eqn{\beta_i^{(0)} = \pi_i, \,\, \forall i\in U}{\beta(0) = \pi, \forall i \in U}
+#'         \item \eqn{\beta_i^{(0)} = \pi_i, \,\, \forall i\in U}{\beta(0) = \pi, i = 1, ..., N}
 #'         \item \eqn{ \beta_i^{(2k-1)} = \frac{(n-1)\pi_i}{\beta^{(2k-2)} - \beta_i^{(2k-2)}}  }{
 #'                     \beta(2k-1) = ( (n-1)\pi )/(\sum\beta(2k-2) - \beta(2k-2)) }
 #'         \item \eqn{\beta_i^{2k} = \beta_i^{(2k-1)}
