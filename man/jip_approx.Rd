@@ -74,22 +74,7 @@ where the \eqn{c_i} determine the approximation used:
 
 }
 }
-\references{
-Hartley, H.O.; Rao, J.N.K., 1962. Sampling With Unequal Probability and Without Replacement.
-The Annals of Mathematical Statistics 33 (2), 350-374.
-
-Hájek, J., 1964. Asymptotic Theory of Rejective Sampling with Varying Probabilities from a Finite Population.
-The Annals of Mathematical Statistics 35 (4), 1491-1523.
-
-Tillé, Y., 1996. Some Remarks on Unequal Probability Sampling Designs Without Replacement.
-Annals of Economics and Statistics 44, 177-189.
-
-Brewer, K.R.W.; Donadio, M.E., 2003. The High Entropy Variance of the Horvitz-Thompson Estimator.
-Survey Methodology 29 (2), 189-196.
-
-
-
-#' @examples
+\examples{
 
 ### Generate population data ---
 N <- 20; n<-5
@@ -104,8 +89,24 @@ pik  <- n * x/sum(x)
 pikl <- jip_approx(pik, method='Hajek')
 pikl <- jip_approx(pik, method='HartleyRao')
 pikl <- jip_approx(pik, method='Tille')
-pikl <- jip_approx(pik, method='BrewerDonadio9')
-pikl <- jip_approx(pik, method='BrewerDonadio10')
-pikl <- jip_approx(pik, method='BrewerDonadio11')
-pikl <- jip_approx(pik, method='BrewerDonadio18')
+pikl <- jip_approx(pik, method='Brewer1')
+pikl <- jip_approx(pik, method='Brewer2')
+pikl <- jip_approx(pik, method='Brewer3')
+pikl <- jip_approx(pik, method='Brewer4')
+
+
+
+}
+\references{
+Hartley, H.O.; Rao, J.N.K., 1962. Sampling With Unequal Probability and Without Replacement.
+The Annals of Mathematical Statistics 33 (2), 350-374.
+
+Hájek, J., 1964. Asymptotic Theory of Rejective Sampling with Varying Probabilities from a Finite Population.
+The Annals of Mathematical Statistics 35 (4), 1491-1523.
+
+Tillé, Y., 1996. Some Remarks on Unequal Probability Sampling Designs Without Replacement.
+Annals of Economics and Statistics 44, 177-189.
+
+Brewer, K.R.W.; Donadio, M.E., 2003. The High Entropy Variance of the Horvitz-Thompson Estimator.
+Survey Methodology 29 (2), 189-196.
 }
