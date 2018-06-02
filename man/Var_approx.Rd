@@ -15,7 +15,8 @@ equal to population size}
 
 \item{n}{a scalar indicating the sample size}
 
-\item{method}{string indicating the approximation that should be used}
+\item{method}{string indicating the approximation that should be used.
+One of "Hajek1", "Hajek2", "HartleyRao1", "HartleyRao2", "FixedPoint".}
 
 \item{...}{two optional parameters can be modified to control the iterative
 procedure in \code{method="FixedPoint"}: \code{maxIter} sets the maximum number

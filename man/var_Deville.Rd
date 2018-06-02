@@ -11,7 +11,10 @@ var_Deville(y, pik, method)
 
 \item{pik}{numeric vector of first-order inclusion probabilities for sample units}
 
-\item{method}{string indicating the desired approximate variance estimator}
+\item{method}{string indicating the desired approximate variance estimator.
+One of "Deville1", "Deville2", "Deville3", "Hajek", "Rosen", "FixedPoint",
+"Brewer1", "HartleyRao", "Berger", "Tille", "MateiTille1", "MateiTille2",
+"MateiTille3", "MateiTille4", "MateiTille5", "Brewer2", "Brewer3", "Brewer4".}
 }
 \value{
 a scalar, the estimated variance

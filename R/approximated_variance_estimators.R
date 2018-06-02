@@ -5,7 +5,10 @@
 #' @param y numeric vector of sample observations
 #' @param pik numeric vector of first-order inclusion probabilities, of length *N* or *n*,
 #' depending on the chosen method (see Details for more information)
-#' @param method string indicating the desired approximate variance estimator
+#' @param method string indicating the desired approximate variance estimator.
+#' One of "Deville1", "Deville2", "Deville3", "Hajek", "Rosen", "FixedPoint",
+#' "Brewer1", "HartleyRao", "Berger", "Tille", "MateiTille1", "MateiTille2",
+#' "MateiTille3", "MateiTille4", "MateiTille5", "Brewer2", "Brewer3", "Brewer4".
 #' @param sample Either a numeric vector of length equal to the sample size, containing
 #' the indeces of sample units, or a boolean vector of the same length of \code{pik}, indicating which
 #' units belong to the sample (\code{TRUE} if the unit is in the sample,

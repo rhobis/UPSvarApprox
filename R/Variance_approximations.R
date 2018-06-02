@@ -9,7 +9,8 @@
 #' @param pik numeric vector of first-order inclusion probabilities, of length
 #' equal to population size
 #' @param n a scalar indicating the sample size
-#' @param method string indicating the approximation that should be used
+#' @param method string indicating the approximation that should be used.
+#' One of "Hajek1", "Hajek2", "HartleyRao1", "HartleyRao2", "FixedPoint".
 #' @param ... two optional parameters can be modified to control the iterative
 #' procedure in \code{method="FixedPoint"}: \code{maxIter} sets the maximum number
 #' of iteration to perform and \code{eps} controls the convergence error
