@@ -85,7 +85,7 @@
 #'
 #'
 #'
-#'#' @examples
+#' @examples
 #'
 #'### Generate population data ---
 #' N <- 20; n<-5
@@ -100,10 +100,10 @@
 #' pikl <- jip_approx(pik, method='Hajek')
 #' pikl <- jip_approx(pik, method='HartleyRao')
 #' pikl <- jip_approx(pik, method='Tille')
-#' pikl <- jip_approx(pik, method='BrewerDonadio9')
-#' pikl <- jip_approx(pik, method='BrewerDonadio10')
-#' pikl <- jip_approx(pik, method='BrewerDonadio11')
-#' pikl <- jip_approx(pik, method='BrewerDonadio18')
+#' pikl <- jip_approx(pik, method='Brewer1')
+#' pikl <- jip_approx(pik, method='Brewer2')
+#' pikl <- jip_approx(pik, method='Brewer3')
+#' pikl <- jip_approx(pik, method='Brewer4')
 #'
 #'
 #'
@@ -114,8 +114,14 @@
 jip_approx <- function( pik, method ){
 
     ### Check input ---
-    method <- match.arg(method, c( "Hajek", "HartleyRao", "Tille",
-                                   "BrewerDonadio9","BrewerDonadio10","BrewerDonadio11","BrewerDonadio18") )
+    method <- match.arg(method, c( "Hajek",
+                                   "HartleyRao",
+                                   "Tille",
+                                   "Brewer1",
+                                   "Brewer2",
+                                   "Brewer3",
+                                   "Brewer4")
+    )
 
     if( !identical( class(pik), "numeric" ) ){
         stop( "Argument 'pik' should be a numeric vector!")
@@ -129,11 +135,14 @@ jip_approx <- function( pik, method ){
 
     ### Call method ---
     jips <- switch(method,
-           "Hajek"       = jip_Hajek(pik),
-           "HartleyRao"  = jip_HartleyRao(pik),
-           "Tille"       = jip_Tille(pik),
-           "Brewer18"    = jip_BrewerDonadio(pik, method)
-           )
+                   "Hajek"       = jip_Hajek(pik),
+                   "HartleyRao"  = jip_HartleyRao(pik),
+                   "Tille"       = jip_Tille(pik),
+                   "Brewer1"    = jip_Brewer(pik, method),
+                   "Brewer2"    = jip_Brewer(pik, method),
+                   "Brewer3"    = jip_Brewer(pik, method),
+                   "Brewer4"    = jip_Brewer(pik, method)
+    )
 
     ### Return result ---
     return( jips )
@@ -152,32 +161,38 @@ jip_approx <- function( pik, method ){
 #' \code{"Brewer18"} is the approximation showed in equation (18) of Brewer and Donadio (2003)
 #'
 
-jip_BrewerDonadio <- function(pik, method){
+jip_Brewer <- function(pik, method){
 
-    method <- match.arg(method, c("BrewerDonadio9","BrewerDonadio10","BrewerDonadio11","BrewerDonadio18"))
+    method <- match.arg(method, c("Brewer1",
+                                  "Brewer2",
+                                  "Brewer3",
+                                  "Brewer4")
+    )
     n <- sum(pik)
 
     ### Compute c values ---
-    if( identical(method, "BrewerDonadio9") ){
+    if( identical(method, "Brewer1") ){ #Equation (9)
 
         ci <- (n-1) / (n-pik)
 
-    }else if( identical(method, "BrewerDonadio10") ){
+    }else if( identical(method, "Brewer2") ){ #Equation (10)
 
         ci <- (n-1) / (n - sum(pik**2)/n)
 
-    }else if( identical(method, "BrewerDonadio11") ){
+    }else if( identical(method, "Brewer3") ){ #Equation (11)
 
         ci <- (n-1) / (n - 2*pik + sum(pik**2)/n)
 
-    }else if( identical(method, "BrewerDonadio18") ){
+    }else if( identical(method, "Brewer4") ){ #Equation (18)
 
         ci <- (n-1) / ( n - (2*n-1)/(n-1)*pik + sum(pik**2)/(n-1) )
 
     }
 
     ### Estimate jips ---
-    cc <- outer(ci,ci, '+')
+    if( identical(method, "Brewer2") ){
+        cc <- ci*2
+    }else cc <- outer(ci,ci, '+')
     pp <- outer(pik,pik, '*')
     out <- pp*cc / 2
     diag(out) <- pik
@@ -185,8 +200,6 @@ jip_BrewerDonadio <- function(pik, method){
     ### Return result ---
     return(out)
 }
-
-
 
 
 #' Hájek's joint-inclusion probability approximation
