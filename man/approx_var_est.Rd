@@ -45,7 +45,7 @@ three classes, depending on the quantities they require:
 \item First and second-order inclusion probabilities:
 The first class is composed of the Horvitz-Thompson estimator (Horvitz and Thompson 1952)
 and the Sen-Yates-Grundy estimator (Yates and Grundy 1953; Sen 1953),
-which are available through function \code{\link{HTvar}};
+which are available through function \code{\link[sampling]{varHT}};
 
 \item Only first-order inclusion probabilities and only for sample units;
 
