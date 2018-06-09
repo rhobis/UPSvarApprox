@@ -1,6 +1,9 @@
 UPSvarApprox
 ======================================================
 
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/UPSvarApprox)](https://cran.r-project.org/package=UPSvarApprox)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/UPSvarApprox)](https://cran.r-project.org/package=UPSvarApprox)
+
 
 Description 
 -----------------
@@ -13,8 +16,7 @@ The main functions are:
 
 - `Var_approx()`: computes and approximation of the variance of the HT estimator; 
 - `approx_var_est()`: computes an approximate variance estimate for the HT estimator;
-- `jip_approx()`: returns a matrix of approximated joint-inclusion probabilities;
-- `HTvar()`: returns the Horvitz-Thompson or Sen-Yates-Grundy variance.
+
 
 
 Installation
