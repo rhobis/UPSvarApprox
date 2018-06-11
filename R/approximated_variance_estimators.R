@@ -311,7 +311,7 @@ approx_var_est <- function(y, pik, method, sample=NULL, ...){
                        "MateiTille2", "MateiTille3", "MateiTille4", "MateiTille5",
                        "Brewer2", "Brewer3", "Brewer4" ) ){
 
-        if( !isTRUE( all.equal(sum(pik), round(sum(pik))) ) )
+        if( !is.wholenumber( sum(pik) ) )
             stop( "The sum of pik values is not an integer!")
 
         if( ly >= lp )
