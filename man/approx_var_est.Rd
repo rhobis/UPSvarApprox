@@ -70,36 +70,45 @@ estimators:
 \item \code{method="Hajek"} [Class 2]
     \deqn{c_i = \frac{n}{n-1}(1-\pi_i)}{c = (n/(n-1)) (1-\pi)}
     \deqn{a_i= c_i}{a=c}
+
 \item \code{method="Deville2"} [Class 2]
     \deqn{c_i = (1-\pi_i)\Biggl\{ 1 - \sum_{j\in s}\Bigl[ \frac{1-\pi_j}{\sum_{k\in s} (1-\pi_k)} \Bigr]^2 \Biggr\}^{-1} }{
     c = (1-\pi) [1 - \sum ( (1-pi)/\sum (1-pi))^2)]^(-1) }
     \deqn{a_i= c_i}{a=c}
+
 \item \code{method="Deville3"} [Class 2]
     \deqn{c_i = (1-\pi_i)\Biggl\{ 1 - \sum_{j\in s}\Bigl[ \frac{1-\pi_j}{\sum_{k\in s} (1-\pi_k)} \Bigr]^2 \Biggr\}^{-1} }{
     c = (1-\pi)[1 - \sum ( (1-pi)/\sum (1-pi))^2)]^(-1) }
     \deqn{a_i = 1}{a=1}
+
 \item \code{method="Rosen"} [Class 2]
     \deqn{c_i = \frac{n}{n-1} (1-\pi_i)}{ c = (n/(n-1)) (1-\pi) }
     \deqn{a_i= (1-\pi_i)log(1-\pi_i) / \pi_i]}{a= (1-\pi)log(1-\pi) / \pi}
+
 \item \code{method="Brewer1"} [Class 2]
     \deqn{c_i = \frac{n}{n-1}(1-\pi_i)}{ c = (n/(n-1)) (1-\pi)}
     \deqn{a_i= 1}{a=1}
+
 \item \code{method="Brewer2"} [Class 3]
     \deqn{c_i = \frac{n}{n-1}(1-\pi_i+ \frac{\pi_i}{n} - n^{-2}\sum_{j \in U} \pi_j^2)}{
     c = (n/(n-1)) (1-\pi+\pi/n - \sum_U \pi/(n^2))}
     \deqn{a_i= 1}{a=1}
+
 \item \code{method="Brewer3"} [Class 3]
     \deqn{c_i = \frac{n}{n-1}(1-\pi_i - \frac{\pi_i}{n} - n^{-2}\sum_{j \in U} \pi_j^2)}{
     c = (n/(n-1)) (1-\pi - \pi/n - \sum_U \pi/(n^2))}
     \deqn{a_i= 1}{a=1}
+
 \item \code{method="Brewer4"} [Class 3]
     \deqn{c_i = \frac{n}{n-1}(1-\pi_i - \frac{\pi_i}{n-1} + n^{-1}(n-1)^{-1}\sum_{j \in U} \pi_j^2)}{
     c= (n/(n-1)) (1-\pi - \pi/(n-1) + \sum_U \pi^2 / (n*(n-1)))}
     \deqn{a_i= 1}{a=1}
+
 \item \code{method="Berger"} [Class 3]
     \deqn{c_i = \frac{n}{n-1} (1-\pi_i) \Biggl[ \frac{\sum_{j\in s} (1-\pi_j)}{\sum_{j\in U}} (1-\pi_j) \Biggr] }{
     c = (n/(n-1)) (1-\pi) (\sum_s (1-\pi) / \sum_U (1-pi)) }
     \deqn{a_i = 1}{a=1}
+
 \item \code{method="HartleyRao"} [Class 3]
     \deqn{c_i = \frac{n}{n-1}(1-\pi_i - n^{-1}\sum_{j \in s}\pi_i + n^{-1}\sum_{j\in U} \pi_j^2)}{
     c= (n/(n-1)) (1-\pi - \sum_s \pi/n + \sum_U \pi^2 / n) }
@@ -144,7 +153,7 @@ Some additional estimators are defined in Matei and Tillé (2005):
         \Biggl( \frac{n(n-1)}{(\beta^(2k-1))^2 - \sum_{i\in U} (\beta_k^{(2k-1)})^2 } \Biggr)^(1/2) }{
         \beta(2k) = \beta(2k-1) ( n(n-1) / ( (\sum\beta(2k-1))^2 - \sum( \beta(2k-1)^2 ) ) )^(1/2) }
     }
-    \eqn{  \text{with} \beta^{(k)} = \sum_{i\in U} \beta_i^{i}, \,\, k=1,2,3, \dots }{}
+    \eqn{ with \beta^{(k)} = \sum_{i\in U} \beta_i^{i}, \,\, k=1,2,3, \dots }{}
 
  \item \code{method="MateiTille1"} [Class 3]
      \deqn{\hat{var}(\hat{t}_{HT}) = \frac{n(N-1)}{N(n-1)} \sum_{i\in s} \frac{b_i}{\pi_i^3} (y_i - \hat{y}_i^*)^2 }{

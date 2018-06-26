@@ -35,6 +35,7 @@ the notation used is that of Matei and Tillé (2005).
 
 \itemize{
     \item Hájek variance approximation (\code{method="Hajek1"}):
+
     \deqn{ \tilde{Var} = \sum_{i \in U} \frac{b_i}{\pi_i^2}(y_i - y_i^*)^2  }{
     \sum b (y - y*)^2 / (\pi^2)}
     where
@@ -45,6 +46,7 @@ the notation used is that of Matei and Tillé (2005).
 
     \item Starting from Hajék (1964), Brewer (2002) defined the following estimator
     (\code{method="Hajek2"}):
+
     \deqn{ \tilde{Var} = \sum_{i \in U} \pi_i(1-\pi_i) \Bigl( \frac{y_i}{\pi_i} -
     \frac{\tilde{Y}}{n} \Bigr)^2 }{
     \sum \pi(1-\pi) ( y/\pi - Y*/n)^2 }
@@ -52,6 +54,7 @@ the notation used is that of Matei and Tillé (2005).
     and \eqn{a_i = n(1-\pi_i)/\sum_{j \in U} \pi_j(1-\pi_j) }{ a = n(1-\pi) / \sum(\pi(1-\pi))}
 
     \item Hartley and Rao (1962) variance approximation (\code{method="HartleyRao1"}):
+
     \deqn{\tilde{Var} = \sum_{i \in U} \pi_i \Bigl( 1 - \frac{n-1}{n}\pi_i \Bigr) \Bigr( \frac{y_i}{\pi_i} - \frac{Y}{n}  \Bigr)^2
     - \frac{n-1}{n^2} \sum_{i \in U} \Biggl( 2\pi_i^3 - \frac{\pi_i^2}{2}\sum_{j \in U} \pi_j^2 \Biggr)\Bigr( \frac{y_i}{\pi_i} - \frac{Y}{n}  \Bigr)^2
     + \frac{2(n-1)}{n^3} \Biggl( \sum_{i \in U}\pi_i y_i - \frac{Y}{n}\sum_{i\in U} \pi_i^2 \Biggr)^2 }{
@@ -59,6 +62,7 @@ the notation used is that of Matei and Tillé (2005).
 
     \item Hartley and Rao (1962) provide a simplified version of the
     variance above (\code{method="HartleyRao2"}):
+
     \deqn{ \tilde{Var} = \sum_{i \in U} \pi_i \Bigl( 1 - \frac{n-1}{n}\pi_i \Bigr) \Bigr( \frac{y_i}{\pi_i} - \frac{Y}{n}  \Bigr)^2 }{
      Var = \sum \pi ( 1 - ( (n-1)/n )\pi )( y/\pi - Y/n )^2 }
 
@@ -73,6 +77,7 @@ the notation used is that of Matei and Tillé (2005).
       }
       a necessary condition for convergence is checked and, if not satisfied,
       the function returns an alternative solution that uses only one iteration:
+
       \deqn{b_i = \pi_i(1-\pi_i)\Bigl( \frac{N\pi_i(1-\pi_i)}{ (N-1)\sum_{j\in U}\pi_j(1-\pi_j) } + 1 \Bigr) }{
       b = \pi(1-\pi)( 1 + (N\pi(1-\pi)) / ( (N-1) \sum \pi(1-\pi) ) ) }
 
