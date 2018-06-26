@@ -1,6 +1,7 @@
 UPSvarApprox
 ======================================================
 
+[![Travis-CI Build Status](https://travis-ci.org/rhobis/UPSvarApprox.svg?branch=master)](https://travis-ci.org/rhobis/UPSvarApprox)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/UPSvarApprox)](https://cran.r-project.org/package=UPSvarApprox)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/UPSvarApprox)](https://cran.r-project.org/package=UPSvarApprox)
 
