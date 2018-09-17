@@ -11,8 +11,8 @@ var_Tille(y, pik, sample, maxIter = 1000, eps = 1e-05)
 
 \item{pik}{numeric vector of first-order inclusion probabilities for all population units}
 
-\item{sample}{Either a numeric vector of length equal to the sample size, containing
-the indeces of sample units, or a boolean vector of the same length of \code{pik}, indicating which
+\item{sample}{Either a numeric vector of length equal to the sample size with
+the indices of sample units, or a boolean vector of the same length of \code{pik}, indicating which
 units belong to the sample (\code{TRUE} if the unit is in the sample,
 \code{FALSE} otherwise.
 Only used with estimators of the third class (see Details for more information).}
@@ -31,3 +31,4 @@ proposed by Tillé (1996).
 Estimator of class 3, it requires only first-order inclusion probabilities but
 for all population units.
 }
+\keyword{internal}

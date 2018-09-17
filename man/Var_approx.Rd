@@ -7,8 +7,8 @@
 Var_approx(y, pik, n, method, ...)
 }
 \arguments{
-\item{y}{numeric vector containing the values of the variable of interest, of
-length equal to population size}
+\item{y}{numeric vector containing the values of the variable of interest for
+all population units}
 
 \item{pik}{numeric vector of first-order inclusion probabilities, of length
 equal to population size}
@@ -20,7 +20,7 @@ One of "Hajek1", "Hajek2", "HartleyRao1", "HartleyRao2", "FixedPoint".}
 
 \item{...}{two optional parameters can be modified to control the iterative
 procedure in \code{method="FixedPoint"}: \code{maxIter} sets the maximum number
-of iteration to perform and \code{eps} controls the convergence error}
+of iterations and \code{eps} controls the convergence error}
 }
 \value{
 a scalar, the approximated variance.
@@ -47,26 +47,36 @@ the notation used is that of Matei and Tillé (2005).
     \item Starting from Hajék (1964), Brewer (2002) defined the following estimator
     (\code{method="Hajek2"}):
 
-    \deqn{ \tilde{Var} = \sum_{i \in U} \pi_i(1-\pi_i) \Bigl( \frac{y_i}{\pi_i} -
+    \deqn{\tilde{Var} = \sum_{i \in U} \pi_i(1-\pi_i) \Bigl( \frac{y_i}{\pi_i} -
     \frac{\tilde{Y}}{n} \Bigr)^2 }{
     \sum \pi(1-\pi) ( y/\pi - Y*/n)^2 }
-    where \eqn{\tilde{Y} = \sum{i \in U} a_i y_i}{ Y* = \sum a*y }
+    where \eqn{\tilde{Y} = \sum_{i \in U} a_i y_i}{ Y* = \sum a*y }
     and \eqn{a_i = n(1-\pi_i)/\sum_{j \in U} \pi_j(1-\pi_j) }{ a = n(1-\pi) / \sum(\pi(1-\pi))}
 
     \item Hartley and Rao (1962) variance approximation (\code{method="HartleyRao1"}):
 
-    \deqn{\tilde{Var} = \sum_{i \in U} \pi_i \Bigl( 1 - \frac{n-1}{n}\pi_i \Bigr) \Bigr( \frac{y_i}{\pi_i} - \frac{Y}{n}  \Bigr)^2
-    - \frac{n-1}{n^2} \sum_{i \in U} \Biggl( 2\pi_i^3 - \frac{\pi_i^2}{2}\sum_{j \in U} \pi_j^2 \Biggr)\Bigr( \frac{y_i}{\pi_i} - \frac{Y}{n}  \Bigr)^2
-    + \frac{2(n-1)}{n^3} \Biggl( \sum_{i \in U}\pi_i y_i - \frac{Y}{n}\sum_{i\in U} \pi_i^2 \Biggr)^2 }{
-    *see pdf version of documentation*}
+
+
+    \deqn{ \tilde{Var} =
+    \sum_{i \in U} \pi_i \Bigl( 1 - \frac{n-1}{n}\pi_i \Bigr)
+    \Biggr( \frac{y_i}{\pi_i} - \frac{Y}{n}  \Biggr)^2}{}
+
+    \deqn{\qquad - \frac{n-1}{n^2} \sum_{i \in U} \Biggl( 2\pi_i^3 -
+    \frac{\pi_i^2}{2} \sum_{j \in U} \pi_j^2 \Biggr)
+    \Biggr( \frac{y_i}{\pi_i} - \frac{Y}{n}  \Biggr)^2}{}
+
+    \deqn{\quad \qquad + \frac{2(n-1)}{n^3} \Biggl( \sum_{i \in U}\pi_i y_i
+    - \frac{Y}{n}\sum_{i\in U} \pi_i^2 \Biggr)^2 }{*see pdf version of documentation*}
+
+
 
     \item Hartley and Rao (1962) provide a simplified version of the
     variance above (\code{method="HartleyRao2"}):
 
-    \deqn{ \tilde{Var} = \sum_{i \in U} \pi_i \Bigl( 1 - \frac{n-1}{n}\pi_i \Bigr) \Bigr( \frac{y_i}{\pi_i} - \frac{Y}{n}  \Bigr)^2 }{
+    \deqn{ \tilde{Var} = \sum_{i \in U} \pi_i \Bigl( 1 - \frac{n-1}{n}\pi_i \Bigr) \Biggr( \frac{y_i}{\pi_i} - \frac{Y}{n}  \Biggr)^2 }{
      Var = \sum \pi ( 1 - ( (n-1)/n )\pi )( y/\pi - Y/n )^2 }
 
-     \item \code{method="FixedPoint"} compute the Fixed-Point variance approximation
+     \item \code{method="FixedPoint"} computes the Fixed-Point variance approximation
      proposed by Deville and Tillé (2005).
      The variance can be expressed in the same form as in \code{method="Hajek1"},
      and the coefficients \eqn{b_i}{b} are computed iteratively by the algorithm:
@@ -78,7 +88,7 @@ the notation used is that of Matei and Tillé (2005).
       a necessary condition for convergence is checked and, if not satisfied,
       the function returns an alternative solution that uses only one iteration:
 
-      \deqn{b_i = \pi_i(1-\pi_i)\Bigl( \frac{N\pi_i(1-\pi_i)}{ (N-1)\sum_{j\in U}\pi_j(1-\pi_j) } + 1 \Bigr) }{
+      \deqn{b_i = \pi_i(1-\pi_i)\Biggl( \frac{N\pi_i(1-\pi_i)}{ (N-1)\sum_{j\in U}\pi_j(1-\pi_j) } + 1 \Biggr) }{
       b = \pi(1-\pi)( 1 + (N\pi(1-\pi)) / ( (N-1) \sum \pi(1-\pi) ) ) }
 
 }

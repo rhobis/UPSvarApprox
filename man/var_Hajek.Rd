@@ -20,3 +20,4 @@ joint-inclusion probabilities proposed by Hájek (1964).
 Estimator of class 2, it requires only first-order inclusion probabilities and
 only for sample units.
 }
+\keyword{internal}

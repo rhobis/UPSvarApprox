@@ -18,6 +18,7 @@
 #'
 #' @return a scalar, the estimated variance
 #'
+#' @keywords internal
 
 var_Berger <- function(y, pik, sample) {
 
@@ -54,6 +55,7 @@ var_Berger <- function(y, pik, sample) {
 #'
 #' @return a scalar, the estimated variance
 #'
+#' @keywords internal
 
 var_HartleyRao <- function(y, pik, sample) {
 
@@ -91,6 +93,8 @@ var_HartleyRao <- function(y, pik, sample) {
 #' @inheritParams approx_var_est
 #'
 #' @return a scalar, the estimated variance
+#'
+#' @keywords internal
 
 var_MateiTille <- function(y, pik, method, sample, maxIter=1000, eps=1e-05) {
 
@@ -235,6 +239,8 @@ var_MateiTille <- function(y, pik, method, sample, maxIter=1000, eps=1e-05) {
 #' @inheritParams approx_var_est
 #'
 #' @return a scalar, the estimated variance
+#'
+#' @keywords internal
 
 var_Brewer_class3 <- function(y, pik, method, sample) {
 
@@ -292,6 +298,8 @@ var_Brewer_class3 <- function(y, pik, method, sample) {
 #' @inheritParams approx_var_est
 #'
 #' @return a scalar, the estimated variance
+#'
+#' @keywords internal
 
 var_Tille <- function(y, pik, sample, maxIter=1000, eps=1e-5) {
 

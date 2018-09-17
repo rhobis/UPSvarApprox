@@ -23,3 +23,4 @@ a scalar, the estimated variance
 Compute Deville's approximate variance estimators of class 2, which require only
 first-order inclusion probabilities and only for sample units
 }
+\keyword{internal}

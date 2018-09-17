@@ -20,3 +20,4 @@ proposed by Rosén (1991).
 Estimator of class 2, it requires only first-order inclusion probabilities and
 only for sample units.
 }
+\keyword{internal}

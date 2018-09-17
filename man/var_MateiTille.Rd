@@ -16,8 +16,8 @@ One of "Deville1", "Deville2", "Deville3", "Hajek", "Rosen", "FixedPoint",
 "Brewer1", "HartleyRao", "Berger", "Tille", "MateiTille1", "MateiTille2",
 "MateiTille3", "MateiTille4", "MateiTille5", "Brewer2", "Brewer3", "Brewer4".}
 
-\item{sample}{Either a numeric vector of length equal to the sample size, containing
-the indeces of sample units, or a boolean vector of the same length of \code{pik}, indicating which
+\item{sample}{Either a numeric vector of length equal to the sample size with
+the indices of sample units, or a boolean vector of the same length of \code{pik}, indicating which
 units belong to the sample (\code{TRUE} if the unit is in the sample,
 \code{FALSE} otherwise.
 Only used with estimators of the third class (see Details for more information).}
@@ -36,3 +36,4 @@ one of the estimators proposed by Matei and Tillé (2005)
 Estimators of class 3, they require only first-order inclusion probabilities but
 for all population units.
 }
+\keyword{internal}

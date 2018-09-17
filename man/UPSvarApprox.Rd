@@ -11,20 +11,10 @@ UPSvarApprox: Approximate the variance of the Horvitz-thompson estimator
 \section{Variance approximation}{
 
 The package provides function \code{Var_approx} for the approximation of the
-Horvitz-Thompson variance and function \code{approx_var_est}, for the computation
-of an approximate estimate of the variance.
-Different methods are available for both functions, see their documentation for
-more details.
-}
-
-\section{Approximation of Joint-inclusion probabilities}{
-
-Function \code{jip_approx} provides a number of approximations of the
-second-order inclusion probabilities that require only the first-order inclusion
-probabilities.
-The variance of the Horvitz-Thompson total estimator may be then estimated by
-plugging the approximated joint probabilities into the Horvitz-Thompson or
-Sen-Yates-Grundy variance estimator using function \code{HTvar}.
+Horvitz-Thompson variance, and function \code{approx_var_est} for the computation
+of approximate variance estimators.
+For both functions, different estimators are implemented,
+see their documentation for details.
 }
 
 \references{

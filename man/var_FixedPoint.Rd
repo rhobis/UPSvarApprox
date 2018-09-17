@@ -24,3 +24,4 @@ Fixed-Point estimator for approximate variance estimation by Deville and Tillé 
 Estimator of class 2, it requires only first-order inclusion probabilities and
 only for sample units.
 }
+\keyword{internal}

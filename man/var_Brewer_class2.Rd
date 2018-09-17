@@ -20,3 +20,4 @@ the estimators proposed by Brewer (2002).
 This estimator belongs to class 2, it requires only first-order inclusion
 probabilities and only for sample units.
 }
+\keyword{internal}

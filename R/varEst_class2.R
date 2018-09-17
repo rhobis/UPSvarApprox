@@ -14,6 +14,7 @@
 #'
 #' @return a scalar, the estimated variance
 #'
+#' @keywords internal
 
 var_Deville <- function(y, pik, method) {
 
@@ -80,6 +81,7 @@ var_Deville <- function(y, pik, method) {
 #'
 #' @return a scalar, the estimated variance
 #'
+#' @keywords internal
 
 var_FixedPoint <- function(y, pik, maxIter=1000, eps=1e-05) {
 
@@ -134,6 +136,8 @@ var_FixedPoint <- function(y, pik, maxIter=1000, eps=1e-05) {
 #' @inheritParams approx_var_est
 #'
 #' @return a scalar, the estimated variance
+#'
+#' @keywords internal
 
 var_Brewer_class2 <- function(y, pik) {
 
@@ -163,6 +167,7 @@ var_Brewer_class2 <- function(y, pik) {
 #'
 #' @return a scalar, the estimated variance
 #'
+#' @keywords internal
 
 var_Hajek <- function(y, pik) {
 
@@ -196,6 +201,7 @@ var_Hajek <- function(y, pik) {
 #'
 #' @return a scalar, the estimated variance
 #'
+#' @keywords internal
 
 var_Rosen <- function(y, pik) {
 
