@@ -4,9 +4,10 @@ Title: Approximate the Variance of the Horvitz-Thompson Total Estimator
 Version: 0.1.1
 Date: 2018-09-20
 Authors@R: person("Roberto", "Sichera", email = "roberto.sichera@unipa.it", role = c("aut", "cre") )
-Description: Functions for the approximation of the variance of the 
+Description: Variance approximations for the 
     Horvitz-Thompson total estimator in Unequal Probability Sampling
-    using only first-order inclusion probabilities.
+    using only first-order inclusion probabilities. 
+    See Matei and Tillé (2005) and Haziza, Mecatti and Rao (2008) for details.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
