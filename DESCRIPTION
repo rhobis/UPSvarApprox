@@ -1,9 +1,9 @@
 Package: UPSvarApprox
 Type: Package
 Title: Approximate the Variance of the Horvitz-Thompson Total Estimator
-Version: 0.1.1
-Date: 2018-09-20
-Authors@R: person("Roberto", "Sichera", email = "roberto.sichera@unipa.it", role = c("aut", "cre") )
+Version: 0.1.2
+Date: 2020-10-13
+Authors@R: person("Roberto", "Sichera", email = "rob.sichera@gmail.com", role = c("aut", "cre") )
 Description: Variance approximations for the 
     Horvitz-Thompson total estimator in Unequal Probability Sampling
     using only first-order inclusion probabilities. 
@@ -11,5 +11,5 @@ Description: Variance approximations for the
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.0
+RoxygenNote: 7.1.1
 BugReports: https://github.com/rhobis/UPSvarApprox/issues
