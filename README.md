@@ -51,11 +51,11 @@ ys <- y[s]
 piks <- pik[s]
 
 ### Variance approximations ---
-VarApprox(y, pik, n, method = "Hajek1")
-VarApprox(y, pik, n, method = "Hajek1")
-VarApprox(y, pik, n, method = "HartleyRao1")
-VarApprox(y, pik, n, method = "HartleyRao2")
-VarApprox(y, pik, n, method = "FixedPoint")
+Var_approx(y, pik, n, method = "Hajek1")
+Var_approx(y, pik, n, method = "Hajek1")
+Var_approx(y, pik, n, method = "HartleyRao1")
+Var_approx(y, pik, n, method = "HartleyRao2")
+Var_approx(y, pik, n, method = "FixedPoint")
 
 
 ### Approximate variance estimators ---
@@ -66,7 +66,7 @@ approx_var_est(ys, piks, method="Deville2")
 approx_var_est(ys, piks, method="Deville3")
 approx_var_est(ys, piks, method="Rosen")
 approx_var_est(ys, piks, method="FixedPoint")
-approx_var_est(ys, piks, method="Brewer2")
+approx_var_est(ys, piks, method="Brewer1")
 
 ## Estimators of class 3 
 approx_var_est(ys, pik, method="Berger", sample=s)
@@ -76,7 +76,7 @@ approx_var_est(ys, pik, method="MateiTille2", sample=s)
 approx_var_est(ys, pik, method="MateiTille3", sample=s)
 approx_var_est(ys, pik, method="MateiTille4", sample=s)
 approx_var_est(ys, pik, method="MateiTille5", sample=s)
-approx_var_est(ys, pik, method="Brewer1", sample=s)
+approx_var_est(ys, pik, method="Brewer2", sample=s)
 approx_var_est(ys, pik, method="Brewer3", sample=s)
 approx_var_est(ys, pik, method="Brewer4", sample=s)
 
