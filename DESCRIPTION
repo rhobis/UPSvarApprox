@@ -1,8 +1,8 @@
 Package: UPSvarApprox
 Type: Package
 Title: Approximate the Variance of the Horvitz-Thompson Total Estimator
-Version: 0.1.2
-Date: 2020-10-13
+Version: 0.1.3
+Date: 2022-06-11
 Authors@R: person("Roberto", "Sichera", email = "rob.sichera@gmail.com", role = c("aut", "cre") )
 Description: Variance approximations for the 
     Horvitz-Thompson total estimator in Unequal Probability Sampling

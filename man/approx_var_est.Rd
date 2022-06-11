@@ -144,7 +144,7 @@ Some additional estimators are defined in Matei and Tillé (2005):
         \Biggl( \frac{n(n-1)}{(\beta^(2k-1))^2 - \sum_{i\in U} (\beta_k^{(2k-1)})^2 } \Biggr)^{(1/2)} }{
         \beta(2k) = \beta(2k-1) ( n(n-1) / ( (\sum\beta(2k-1))^2 - \sum( \beta(2k-1)^2 ) ) )^(1/2) }
     }
-    with \eqn{\beta^{(k)} = \sum_{i\in U} \beta_i^{i}, \,\, k=1,2,3, \dots }{}
+    with \eqn{\beta^{(k)} = \sum_{i\in U} \beta_i^{i}, \,\, k=1,2,3, \dots }
 
  \item \code{method="MateiTille1"} [Class 3]
      \deqn{\widehat{var}(\hat{t}_{HT}) = \frac{n(N-1)}{N(n-1)} \sum_{i\in s} \frac{b_i}{\pi_i^3} (y_i - \hat{y}_i^*)^2 }{

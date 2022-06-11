@@ -59,11 +59,11 @@ the notation used is that of Matei and Tillé (2005).
 
     \deqn{ \tilde{Var} =
     \sum_{i \in U} \pi_i \Bigl( 1 - \frac{n-1}{n}\pi_i \Bigr)
-    \Biggr( \frac{y_i}{\pi_i} - \frac{Y}{n}  \Biggr)^2}{}
+    \Biggr( \frac{y_i}{\pi_i} - \frac{Y}{n}  \Biggr)^2}
 
     \deqn{\qquad - \frac{n-1}{n^2} \sum_{i \in U} \Biggl( 2\pi_i^3 -
     \frac{\pi_i^2}{2} \sum_{j \in U} \pi_j^2 \Biggr)
-    \Biggr( \frac{y_i}{\pi_i} - \frac{Y}{n}  \Biggr)^2}{}
+    \Biggr( \frac{y_i}{\pi_i} - \frac{Y}{n}  \Biggr)^2}
 
     \deqn{\quad \qquad + \frac{2(n-1)}{n^3} \Biggl( \sum_{i \in U}\pi_i y_i
     - \frac{Y}{n}\sum_{i\in U} \pi_i^2 \Biggr)^2 }{*see pdf version of documentation*}
