@@ -16,9 +16,6 @@
 #'
 #'
 #'
-#' @docType package
-#'
-#' @name UPSvarApprox
 #'
 #' @references
 #'
@@ -31,4 +28,4 @@
 #' unequal probability sampling design. Metron LXVI (1), 91-108.
 #'
 #'
-NULL
+'_PACKAGE'
