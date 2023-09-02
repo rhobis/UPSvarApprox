@@ -1,7 +1,6 @@
 UPSvarApprox
 ======================================================
 
-[![Build Status](https://app.travis-ci.com/rhobis/UPSvarApprox.svg?branch=master)](https://app.travis-ci.com/rhobis/UPSvarApprox/)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/UPSvarApprox)](https://cran.r-project.org/package=UPSvarApprox)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/UPSvarApprox)](https://cran.r-project.org/package=UPSvarApprox)
 [![R badge](https://img.shields.io/badge/-Support%20me-brightgreen)](https://www.buymeacoffee.com/rhobis)
